@@ -92,10 +92,12 @@ node *deleteBST(node *root, int key){
 		}
 		
 		//If there is two children
-		node *temp = root->right;
-		while(temp->left != NULL){
-			temp = temp->left;
-		}
+			//Find the successor of the right subtree
+			node *temp = root->right;
+			while(temp->left != NULL){
+				temp = temp->left;
+			}
+		//Change the value and delete successor
 		root->val = temp->val;
 		root->right = deleteBST(root->right, root->val);
 	}
